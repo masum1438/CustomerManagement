@@ -1,0 +1,42 @@
+<h2 class="mb-4">Add New Customer</h2>
+
+<form (ngSubmit)="save()" class="mx-auto" style="max-width: 600px;">
+  <div class="mb-3">
+    <label for="name" class="form-label">Full Name</label>
+    <input [(ngModel)]="customer.name" name="name" id="name" class="form-control" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input [(ngModel)]="customer.email" name="email" id="email" type="email" class="form-control" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="phone" class="form-label">Phone</label>
+    <input [(ngModel)]="customer.phone" name="phone" id="phone" class="form-control" />
+  </div>
+
+  <div class="mb-3">
+    <label for="address" class="form-label">Address</label>
+    <input [(ngModel)]="customer.address" name="address" id="address" class="form-control" />
+  </div>
+
+  <div class="mb-3">
+    <label for="balance" class="form-label">Balance</label>
+    <input [(ngModel)]="customer.balance" name="balance" id="balance" type="number" class="form-control" />
+  </div>
+
+  <div class="mb-3">
+    <label for="status" class="form-label">Status</label>
+    <select [(ngModel)]="customer.status" name="status" id="status" class="form-select">
+      <option>Active</option>
+      <option>Inactive</option>
+    </select>
+  </div>
+
+  <div class="d-flex gap-2 mt-3">
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-warning" (click)="reset()">Reset</button>
+    <button type="button" class="btn btn-secondary" routerLink="/customers">Cancel</button>
+  </div>
+</form>

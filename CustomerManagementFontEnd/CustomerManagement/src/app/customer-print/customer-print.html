@@ -1,0 +1,42 @@
+<div *ngIf="isSingle && singleCustomer" class="card mx-auto p-3 mb-4" style="max-width: 700px;">
+  <div class="card-body">
+    <h2 class="card-title mb-3">Customer Details</h2>
+    <p class="card-text"><b>Name:</b> {{singleCustomer.name}}</p>
+    <p class="card-text"><b>Email:</b> {{singleCustomer.email}}</p>
+    <p class="card-text"><b>Phone:</b> {{singleCustomer.phone}}</p>
+    <p class="card-text"><b>Address:</b> {{singleCustomer.address}}</p>
+    <p class="card-text"><b>Balance:</b> {{singleCustomer.balance | number:'1.2-2'}}</p>
+    <button class="btn btn-secondary mt-3" (click)="back()">Back</button>
+  </div>
+</div>
+
+<div *ngIf="!isSingle" class="table-responsive">
+  <h2 class="mb-3">Customer List</h2>
+  <table class="table table-bordered table-striped table-hover">
+    <thead class="table-light">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Balance</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of customers">
+        <td>{{c.name}}</td>
+        <td>{{c.email}}</td>
+        <td>{{c.phone}}</td>
+        <td>{{c.address}}</td>
+        <td>{{c.balance | number:'1.2-2'}}</td>
+        <td>
+          <span [ngClass]="c.status === 'Active' ? 'text-success' : 'text-danger'">
+            {{c.status}}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-secondary mt-3" (click)="back()">Back</button>
+</div>
