@@ -18,16 +18,20 @@ customers: Customer[] = [];
 
   constructor(private service: CustomerService, private route: ActivatedRoute, private router: Router) {}
 
-  ngOnInit() {
-    const idParam = this.route.snapshot.paramMap.get('id');
-    if (idParam) {
-      this.isSingle = true;
-      const id = Number(idParam);
-      this.service.getById(id).subscribe(c => { this.singleCustomer = c; setTimeout(()=>window.print(), 300); });
-    } else {
-      this.service.getAll().subscribe(list => { this.customers = list; setTimeout(()=>window.print(), 300); });
-    }
+     ngOnInit() {
+    // Load all customers for full list print
+    this.service.getAll().subscribe(list => { 
+      this.customers = list; 
+      setTimeout(() => window.print(), 300); 
+    });
   }
 
-  back() { this.router.navigate(['customer-list']); }
+  back() { 
+    this.router.navigate(['customer-list']); 
+  }
+
+  print() {
+    window.print();
+  }
+
 }

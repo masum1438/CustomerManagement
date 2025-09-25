@@ -1,0 +1,48 @@
+/* General print-friendly adjustments */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .table-responsive, .table-responsive * {
+    visibility: visible;
+  }
+  .table-responsive {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  /* Keep original table styling but ensure borders are visible */
+  table.table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    font-size: 12pt;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  table.table th,
+  table.table td {
+    border: 1px solid #000 !important;
+    padding: 6px !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Right align balance column */
+  table.table td.text-end {
+    text-align: right !important;
+  }
+
+  /* Keep original badge color instead of forcing black/white */
+  .badge {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Keep buttons and their background colors */
+  .btn {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

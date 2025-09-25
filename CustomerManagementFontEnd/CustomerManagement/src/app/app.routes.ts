@@ -16,5 +16,5 @@ export const routes: Routes = [
   { path: 'customer-print', component: CustomerPrint }, 
    // single print
  // { path: 'customers/print-all', component: CustomerPrintComponent },  // full list print
-  { path: '**', component: CustomerList  } // wildcard
+  { path: '**', component: CustomerList  } 
 ];

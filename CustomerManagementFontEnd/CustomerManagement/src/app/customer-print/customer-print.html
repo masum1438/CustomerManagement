@@ -1,25 +1,24 @@
-<div *ngIf="isSingle && singleCustomer" class="card mx-auto p-3 mb-4" style="max-width: 700px;">
-  <div class="card-body">
-    <h2 class="card-title mb-3">Customer Details</h2>
-    <p class="card-text"><b>Name:</b> {{singleCustomer.name}}</p>
-    <p class="card-text"><b>Email:</b> {{singleCustomer.email}}</p>
-    <p class="card-text"><b>Phone:</b> {{singleCustomer.phone}}</p>
-    <p class="card-text"><b>Address:</b> {{singleCustomer.address}}</p>
-    <p class="card-text"><b>Balance:</b> {{singleCustomer.balance | number:'1.2-2'}}</p>
-    <button class="btn btn-secondary mt-3" (click)="back()">Back</button>
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2>Customer List</h2>
+  <div class="d-flex gap-2">
+    <button class="btn btn-secondary" (click)="back()">
+      <i class="bi bi-arrow-left"></i> Back
+    </button>
+    <button class="btn btn-primary" (click)="print()">
+      <i class="bi bi-printer"></i> Print All
+    </button>
   </div>
 </div>
 
-<div *ngIf="!isSingle" class="table-responsive">
-  <h2 class="mb-3">Customer List</h2>
+<div class="table-responsive">
   <table class="table table-bordered table-striped table-hover">
-    <thead class="table-light">
+    <thead class="table-dark">
       <tr>
         <th>Name</th>
         <th>Email</th>
         <th>Phone</th>
         <th>Address</th>
-        <th>Balance</th>
+        <th class="text-end">Balance</th>
         <th>Status</th>
       </tr>
     </thead>
@@ -29,14 +28,16 @@
         <td>{{c.email}}</td>
         <td>{{c.phone}}</td>
         <td>{{c.address}}</td>
-        <td>{{c.balance | number:'1.2-2'}}</td>
+        <td class="text-end">{{c.balance | number:'1.2-2'}}</td>
         <td>
-          <span [ngClass]="c.status === 'Active' ? 'text-success' : 'text-danger'">
+          <span class="badge" [ngClass]="c.status === 'Active' ? 'bg-success' : 'bg-danger'">
             {{c.status}}
           </span>
         </td>
       </tr>
+      <tr *ngIf="customers.length === 0">
+        <td colspan="6" class="text-center text-muted">No records found</td>
+      </tr>
     </tbody>
   </table>
-  <button class="btn btn-secondary mt-3" (click)="back()">Back</button>
 </div>
