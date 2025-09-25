@@ -24,6 +24,7 @@ Here also contains Search box which can filter or search in the customer list us
 ## Project Structure
 
 **Backend (ASP.NET Core)**
+```tex
 |-- Controllers
 |   |-- CustomersController.cs
 |   `-- WeatherForecastController.cs
@@ -36,8 +37,9 @@ Here also contains Search box which can filter or search in the customer list us
 |-- Model
 |   `-- Customer.cs
 `-- Program.cs
-
+```
 **Frontend (Angular)**
+```tex
 |-- app
 |   |-- app.config.ts
 |   |-- app.css      
@@ -81,7 +83,7 @@ Here also contains Search box which can filter or search in the customer list us
 |-- index.html
 |-- main.ts
 `-- styles.css
-
+```
 ---
 
 
