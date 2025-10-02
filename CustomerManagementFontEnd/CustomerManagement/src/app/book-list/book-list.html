@@ -1,0 +1,65 @@
+<div class="container mt-4">
+  <h2>Book Management</h2>
+
+  <!-- Top Actions -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+      <a routerLink="/customer-list" class="btn btn-info me-2">
+        <i class="bi bi-card-list"></i> Customer List
+      </a>
+      <a routerLink="/books/add" class="btn btn-primary me-2">
+        <i class="bi bi-plus-circle"></i> Add Book
+      </a>
+      <button class="btn btn-success me-2" (click)="downloadXLS()">
+        <i class="bi bi-file-earmark-excel"></i> Download Excel
+      </button>
+      <button class="btn btn-danger" (click)="downloadPDF()">
+        <i class="bi bi-file-earmark-pdf"></i> Download PDF
+      </button>
+    </div>
+  </div>
+
+  <!-- Book Table -->
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Book Name</th>
+       
+        <th>Details</th>
+        <th>Image</th>
+         <th>Published Date</th>
+        <th style="width: 220px;">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{ book.bookId }}</td>
+        <td>{{ book.bookName }}</td>
+        
+        <td>{{ book.bookDetails }}</td>
+        <td>
+          <img [src]="book.bookImg" alt="Book Image" width="60" height="60" class="img-thumbnail" />
+        </td>
+        <td>{{ book.publishedDate | date: 'mediumDate' }}</td>
+        <td>
+          <a [routerLink]="['/books/edit', book.bookId]" class="btn btn-sm btn-primary me-1">
+            Edit
+          </a>
+          <!-- <button (click)="deleteBook(book.bookId)" class="btn btn-sm btn-danger me-1">
+            Delete
+          </button> -->
+          <button class="btn btn-sm btn-success me-1" (click)="downloadXLS(book)">
+            <i class="bi bi-file-earmark-excel"></i>
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="singlePDFDownload(book)">
+            <i class="bi bi-file-earmark-pdf"></i>
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="books.length === 0">
+        <td colspan="6" class="text-center">No books available.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

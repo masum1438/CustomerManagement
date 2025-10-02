@@ -5,6 +5,7 @@ import { CustomerUpdate } from './customer-update/customer-update';
 import { CustomerDetails } from './customer-details/customer-details';
 import { CustomerPrint } from './customer-print/customer-print';
 import { CustomerSingleprint } from './customer-singleprint/customer-singleprint';
+import { BookList } from './book-list/book-list';
 //{ CustomerList } from './customer-list';
 export const routes: Routes = [
      { path: '', component: CustomerList  },  // default route
@@ -14,6 +15,7 @@ export const routes: Routes = [
   { path: 'customer-details/:id', component: CustomerDetails },
   { path: 'customer-singleprint/:id', component: CustomerSingleprint },
   { path: 'customer-print', component: CustomerPrint }, 
+   { path: 'book-list', component: BookList }, 
    // single print
  // { path: 'customers/print-all', component: CustomerPrintComponent },  // full list print
   { path: '**', component: CustomerList  } 
